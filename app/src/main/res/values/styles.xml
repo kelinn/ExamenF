@@ -42,5 +42,7 @@ limitations under the License. -->
         <item name="android:paddingLeft">8dp</item>
     </style>
 
+    <style name="medida_title"></style>
+
 
 </resources>

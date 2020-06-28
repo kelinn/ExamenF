@@ -19,7 +19,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,6 +32,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     private WordListAdapter adapter;
     class WordViewHolder extends RecyclerView.ViewHolder {
         private final TextView wordItemView;
+        private final TextView wordItemView2;
 
         public  Button updateBTN;
         public  Button deleteBTN;
@@ -39,6 +43,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
             super(itemView);
 
             wordItemView = itemView.findViewById(R.id.textView);
+            wordItemView2 = itemView.findViewById(R.id.textViewM);
             updateBTN = (Button) itemView.findViewById(R.id.editBtn);
             deleteBTN = (Button) itemView.findViewById(R.id.deleteBtn);
             mWordViewModel = ViewModelProviders.of((FragmentActivity) mInflater.getContext()).get(WordViewModel.class);
@@ -68,6 +73,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         final Word current = mWords.get(position);
 
         holder.wordItemView.setText(current.getWord());
+        holder.wordItemView2.setText(current.getMedida());
 
         holder.updateBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,10 +82,16 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
                 View _inflater = mInflater.inflate(R.layout.edit_word, _parent, false);
 
                 final EditText editText;
+                final EditText editText2;
+                final EditText editText3;
 
                 editText = (EditText) _inflater.findViewById(R.id.word_);
+                editText2 = (EditText) _inflater.findViewById(R.id.medida_);
+                editText3 = (EditText) _inflater.findViewById(R.id.edit_fecha);
+
 
                 editText.setText(current.getWord());
+                editText2.setText(current.getMedida());
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(mInflater.getContext());
                 dialogo1.setTitle(current.getWord());
                 dialogo1.setMessage("¿ Desea Editar el item ?");
@@ -88,6 +100,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
                 dialogo1.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                         current.setmWord(editText.getText().toString());
+                        current.setmMedida(editText2.getText().toString());
+                        current.setmFecha(editText3.getText().toString());
                         mWordViewModel.update(current);
                         adapter.notifyItemChanged(position);
                     }
@@ -127,8 +141,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
 
 
-    void setWords(List<Word> words) {
-        mWords = words;
+    void setWords(List<Word> potreros) {
+        mWords = potreros;
         notifyDataSetChanged();
     }
 

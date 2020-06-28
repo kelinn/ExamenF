@@ -11,6 +11,13 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light" />
 
+    <TextView
+        android:id="@+id/textViewM"
+        style="@style/medida_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light" />
+
     <Button
         android:id="@+id/editBtn"
         android:layout_width="match_parent"
