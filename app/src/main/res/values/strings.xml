@@ -1,0 +1,8 @@
+
+<resources>
+    <string name="app_name">ExamenII_Kelin Silva y Anthony Marín</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_word">Lote</string>
+    <string name="button_save">Guardar</string>
+    <string name="empty_not_saved">No se puede guardar elementos en blanco</string>
+</resources>
